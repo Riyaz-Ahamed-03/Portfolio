@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyaz Ahamed | Portfolio
+ </title>
+  <link rel="shortcut icon" href="Images/png.jpg" type="image/x-icon">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#7e22ce',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            left: -7.5px;
+            top: 0;
+            background: linear-gradient(135deg, #0ea5e9, #7e22ce);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #1e293b;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            transition: width 1s ease-in-out;
+        }
+        
+        .project-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            box-shadow: 5px 5px 15px rgba(2, 6, 23, 0.5), 
+                        -5px -5px 15px rgba(30, 41, 59, 0.5);
+        }
+        
+        .contact-input {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-dark text-slate-200">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-darker/80 backdrop-blur-sm z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-slate-200 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
+                <a href="#home" class="block py-2 nav-link active">Home</a>
+                <a href="#about" class="block py-2 nav-link">About</a>
+                <a href="#skills" class="block py-2 nav-link">Skills</a>
+                <a href="#projects" class="block py-2 nav-link">Projects</a>
+                <a href="#contact" class="block py-2 nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Riyaz Ahamed</span></h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-slate-300">Web Developer | Python Programmer</h2>
+                <p class="text-lg mb-8 text-slate-400 max-w-lg">
+                    I build exceptional digital experiences that are fast, accessible, and visually appealing. 
+                    Let's create something amazing together.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="px-6 py-3 rounded-full btn-primary font-medium">Hire Me</a>
+                    <a href="#projects" class="px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary/10 transition">View Work</a>
+                </div>
+                <div class="flex mt-8 space-x-4">
+                    <a href="https://github.com/Riyaz-Ahamed-03" class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/riyaz--ahamed" class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-600">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                   
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-54 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-xl opacity-20"></div>
+                    <img src="Images/Riyaz_photo.jpg" 
+                         alt="Profile" 
+                         class="relative w-full h-full object-cover rounded-full border-4 border-slate-800 floating">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-darker">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="relative w-64 h-64">
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-secondary blur-xl opacity-20"></div>
+                        <img src="Images/Riyaz_photo1.jpg"
+                             alt="About" 
+                             class="relative w-full h-full object-cover rounded-2xl border-4 border-slate-800">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <p class="text-slate-400 mb-6">
+                        I'm Riyaz Ahamed, a passionate and goal-oriented B.Tech Information Technology student with a strong foundation in programming, web development, and software development. I have hands-on experience in Python, Java, and frontend technologies like HTML, CSS, JavaScript, and React JS. My academic projects, including a Malware Detection System and a Biometric Authentication System, reflect my interest in solving real-world problems using technology.
+                        <br><br>
+                        I’ve completed internships in Python development, web development, and data science, helping me build practical skills and industry exposure. I enjoy designing intuitive web interfaces, working with tools like Tailwind CSS and Canva, and building efficient, user-friendly applications.
+
+
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-semibold mb-2">Name: <span class="text-slate-300">Riyaz Ahamed.I</span></h4>
+                            <h4 class="font-semibold mb-2">Email: <span class="text-slate-300">riyazahamed032003@gmail.com</span></h4>
+                            <h4 class="font-semibold mb-2">Phone: <span class="text-slate-300">+91 8678982443</span></h4>
+                        </div>
+                      
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="https://drive.google.com/file/d/13_lG06h5Op4z2wHA2_78rGC507d1u17S/view?usp=drive_link" class="px-6 py-3 rounded-full btn-primary font-medium">Download CV</a>
+                        <a href="#contact" class="px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary/10 transition">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Academic Credentials Section -->
+<section id="education" class="py-20 bg-darker">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Academic <span class="gradient-text">Credentials</span></h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+    </div>
+
+    <div class="space-y-8 max-w-4xl mx-auto">
+
+      <!-- B.Tech -->
+      <div class="bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-xl transition flex items-start">
+        <div class="text-primary mr-4 mt-1">
+          <i class="fas fa-graduation-cap text-3xl"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-white">B.Tech in Information Technology</h3>
+          <p class="text-slate-400">Al-Ameen Engineering College (Autonomous)</p>
+          <p class="text-slate-300 mt-2">CGPA: 8.39</p>
+          <p class="text-slate-400 text-sm">June 2022 - May 2025</p>
+        </div>
+      </div>
+
+      <!-- Diploma -->
+      <div class="bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-xl transition flex items-start">
+        <div class="text-sky-400 mr-4 mt-1">
+          <i class="fas fa-laptop-code text-3xl"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-white">Diploma in Computer Science and Engineering</h3>
+          <p class="text-slate-400">Al-Ameen Polytechnic College</p>
+          <p class="text-slate-300 mt-2">CGPA: 9.79</p>
+          <p class="text-slate-400 text-sm">June 2019 - March 2022</p>
+        </div>
+      </div>
+
+      <!-- SSLC -->
+      <div class="bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-xl transition flex items-start">
+        <div class="text-yellow-400 mr-4 mt-1">
+          <i class="fas fa-school text-3xl"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-white">SSLC (10th Standard)</h3>
+          <p class="text-slate-400">Municipal High School, Edaiyankattuvaalsu</p>
+          <p class="text-slate-300 mt-2">Percentage: 59%</p>
+          <p class="text-slate-400 text-sm">March 2019</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+            
+            <!-- Experience Timeline -->
+       <!-- Experience Section -->
+<div class="mt-20 bg-slate-900 py-12">
+    <h3 class="text-3xl font-bold mb-12 text-center text-white">My <span class="gradient-text">Experience</span></h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
+        
+        <!-- Card 1: Data Science Intern -->
+        <div class="bg-slate-800 rounded-2xl shadow-lg p-6 hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out">
+            <div class="flex items-center mb-4">
+                <svg class="w-6 h-6 text-teal-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"></path></svg>
+                <h4 class="text-xl font-semibold text-white">Data Science Intern</h4>
+            </div>
+            <p class="text-sm text-slate-400 mb-2">Yellow Matics • Mar 2025 - May 2025</p>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Learned and practiced backend development using Python and Flask, focusing on building basic web applications.
+            </p>
+        </div>
+
+        <!-- Card 2: Web Development Intern -->
+        <div class="bg-slate-800 rounded-2xl shadow-lg p-6 hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out">
+            <div class="flex items-center mb-4">
+                <svg class="w-6 h-6 text-sky-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 4a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4zm10-10a1 1 0 011-1h4a1 1 0 011 1v10a1 1 0 01-1 1h-4a1 1 0 01-1-1V4z"></path></svg>
+                <h4 class="text-xl font-semibold text-white">Web Development Intern</h4>
+            </div>
+            <p class="text-sm text-slate-400 mb-2">Tronstride FZC, UAE • Jan 2023 (10 days)</p>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Learned and practiced front-end development using HTML, CSS, and JavaScript to build responsive, user-friendly interfaces.
+            </p>
+        </div>
+
+        <!-- Card 3: Python Development Intern -->
+        <div class="bg-slate-800 rounded-2xl shadow-lg p-6 hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out">
+            <div class="flex items-center mb-4">
+                <svg class="w-6 h-6 text-yellow-400 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c.828 0 1.5.895 1.5 2s-.672 2-1.5 2-1.5-.895-1.5-2 .672-2 1.5-2zm0 0v2.5M21 12c0 5.523-4.477 10-10 10S1 17.523 1 12 5.477 2 11 2s10 4.477 10 10z"></path></svg>
+                <h4 class="text-xl font-semibold text-white">Python Development Intern</h4>
+            </div>
+            <p class="text-sm text-slate-400 mb-2">Tronstride FZC, UAE • Jul 2023 (1 week)</p>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Learned and practiced backend development using Python and Flask, focusing on building functional web applications.
+            </p>
+        </div>
+    </div>
+</div>
+
+<br><br>
+    
+    <!-- Skills Section -->
+     <section id="skills" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Soft <span class="gradient-text">Skills</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            
+            
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Professional Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Communication</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Teamwork</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Problem Solving</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Creativity</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+            <!-- Tools & Technologies -->
+            <div class="mt-16" id="skills">
+                <h3 class="text-2xl font-bold mb-8 text-center">Skills & <span class="gradient-text">Technologies</span></h3>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fab fa-css3-alt text-4xl text-blue-500 mb-2"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fab fa-js text-4xl text-yellow-400 mb-2"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fab fa-react text-4xl text-blue-400 mb-2"></i>
+                        <span>React</span>
+                    </div>
+                    <!-- Python Skill Card -->
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fab fa-python text-4xl text-yellow-400 mb-3"></i>
+                        <span class="text-white text-sm font-medium">Python</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fab fa-java text-4xl text-orange-400 mb-2"></i>
+                        <span class="text-white text-sm font-medium">Java</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fab fa-bootstrap text-4xl text-orange-600 mb-2"></i>
+                        <span>Bootstrap</span>
+                    </div>
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C Logo" class="w-12 h-12 mb-2" />
+                        <span class="text-white text-sm font-medium">C Programming</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fas fa-database text-4xl text-blue-500 mb-2"></i>
+                        <span class="text-white text-sm font-medium">MySQL</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="Firebase" class="w-12 h-12 mb-2" />
+                        <span class="text-white text-sm font-medium">Firebase</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                        <i class="fas fa-terminal text-4xl text-gray-300 mb-2"></i>
+                        <span>VS Code</span>
+                    </div>
+                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
+                         <i class="fas fa-paint-brush text-4xl text-purple-400 mb-2"></i>
+                        <span class="text-white text-sm font-medium">Canva</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+   <section id="projects" class="py-20 bg-darker">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Projects</span></h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+    </div>
+
+    <!-- Grid with horizontal spacing -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Card 1 Wrapper with left/right padding -->
+      <div class="px-4">
+        <div class="bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-4">
+          <div class="h-48 overflow-hidden rounded-lg">
+            <img src="Images/1.jpg" 
+                 alt="Malware Detection System" 
+                 class="w-full h-full object-cover hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 text-white">Malware Detection System</h3>
+            <p class="text-slate-400 mb-4">
+              Developed a web-based malware detection system using Python, Flask, and Firebase. Uses machine learning to identify malicious files uploaded through the interface.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-slate-700 text-white rounded-full text-sm">Python</span>
+              <span class="px-3 py-1 bg-slate-700 text-white rounded-full text-sm">Flask</span>
+              <span class="px-3 py-1 bg-slate-700 text-white rounded-full text-sm">Firebase</span>
+              <span class="px-3 py-1 bg-slate-700 text-white rounded-full text-sm">Machine Learning</span>
+            </div>
+            <div class="flex space-x-6 text-sm">
+              <a href="https://github.com/Riyaz-Ahamed-03/Malware-detection" class="text-blue-400 hover:text-blue-300 flex items-center space-x-1">
+                <i class="fab fa-github"></i><span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 Wrapper with left/right padding -->
+      <div class="px-4">
+        <div class="bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-4">
+          <div class="h-48 overflow-hidden rounded-lg">
+            <img src="Images/2.jpg" 
+                 alt="Biometric Authentication System" 
+                 class="w-full h-full object-cover hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 text-white">Biometric Authentication System</h3>
+            <p class="text-slate-400 mb-4">
+              Built a secure authentication system using VB.NET and SQL Server 2005. Implemented neural networks with backpropagation for identity verification through biometric data.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-slate-700 text-white rounded-full text-sm">VB.NET</span>
+              <span class="px-3 py-1 bg-slate-700 text-white rounded-full text-sm">SQL Server</span>
+              <span class="px-3 py-1 bg-slate-700 text-white rounded-full text-sm">Neural Networks</span>
+              <span class="px-3 py-1 bg-slate-700 text-white rounded-full text-sm">Backpropagation</span>
+            </div>
+            <div class="flex space-x-6 text-sm">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+           <br><br>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <p class="text-slate-400 mb-8">
+                        Feel free to reach out to me for any questions or opportunities. 
+                        I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Location</h4>
+                                <p class="text-slate-400">Erode,TamilNadu</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-slate-400">riyazahamed032003@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Phone</h4>
+                                <p class="text-slate-400">+91 8678982443</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Riyaz-Ahamed-03" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/riyaz--ahamed/" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-600">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+                
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-darker py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                    <p class="text-slate-400 mt-2">© 2025 Riyaz Ahamed. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://github.com/Riyaz-Ahamed-03" class="text-slate-400 hover:text-primary transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/riyaz--ahamed/" class="text-slate-400 hover:text-blue-600 transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                   
+                </div>
+            </div>
+            
+            
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Update active link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+            
+            // Show/hide back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (scrollPosition > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        // Back to top button
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animate skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillsSection = document.getElementById('skills');
+            const skillsSectionTop = skillsSection.offsetTop;
+            const windowHeight = window.innerHeight;
+            
+            if (window.scrollY > skillsSectionTop - windowHeight + 200) {
+                skillBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+                
+                // Remove event listener after animation
+                window.removeEventListener('scroll', animateSkillBars);
+            }
+        };
+        
+        window.addEventListener('scroll', animateSkillBars);
+    </script>
+</body>
+</html>
